@@ -4,12 +4,12 @@
 % Make my code clean and neat.
 % Keep modest and keep updating.
 % Author: Lingchu Xi
-% Version: 0.1.0
-% Date: 2020-09-27
+% Version: 0.2.0
+% Date: 2020-12-09
 % And maybe that is the most difficult one.
 %-------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{pre_academic}[2020/09/27 v0.1.0 Help you make your presentations easier.]
+\ProvidesClass{pre\_academic}[2020/12/09 v0.2.0 Add a new package animate.]
 %----------------------------------------%
 %------------ Options Of Pre ------------%
 %----------------------------------------%
@@ -51,12 +51,14 @@
 \RequirePackage{tikz-3dplot}
 \usetikzlibrary{arrows, shapes, backgrounds}
 \RequirePackage{epstopdf}
+\RequirePackage{animate}
 %-------- Geometry And Sturcture --------%
 \RequirePackage{float}
 \RequirePackage{booktabs}
 %------------- Fonts Setting -------------%
-\RequirePackage{fontspec}
-\setmainfont{Times New Roman}
+%\RequirePackage{fontspec}
+%\setmainfont{Times New Roman}
+%\RequirePackage{times}
 %--------------- Hyperref ---------------%
 \RequirePackage{hyperref}
 %----------------------------------------%
@@ -144,7 +146,7 @@
 %----------------------------------------%
 \setbeamertemplate{footline}{
     \ifnum\c@framenumber>0
-        \begin{tikzpicture}
+        \begin{tikzpicture}[remember picture, overlay]
             \filldraw[themecolor]
             (current page.south west) -- ([yshift=0.05\paperheight] current page.south west) [rounded corners=3pt] --
             ([yshift=0.05\paperheight, xshift=0.125\paperwidth] current page.south west)  --
@@ -179,7 +181,7 @@
             \node (logo) at ([yshift=-0.25\paperheight]current page.north) [anchor=center, inner sep=0]{
                 \includegraphics[scale=0.35]{pics/logo}
             };
-            \node[rectangle, rounded corners, fill=sthemecolor, text=white, inner sep = 15pt, align=center] (title) at ([yshift=-40pt] logo.south) {
+            \node[rectangle, rounded corners, fill=sthemecolor, text=white, inner sep = 15pt, align=center, font=\usebeamerfont{title}] (title) at ([yshift=-40pt] logo.south) {
                 \usebeamerfont{title} \inserttitle 
                 \if@subtitle \\ \usebeamerfont{subtitle} \insertsubtitle\fi};
             \node [align=center, text=toccolor ] (author) at ([yshift=-0.05\paperheight-20pt] title.south) {
@@ -242,12 +244,12 @@
 %----------------------------------------%
 %--------------- Hyperref ---------------%
 %----------------------------------------%
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    urlcolor=cyan,
-    filecolor=magenta
-}
+%\hypersetup{
+%    colorlinks=true,
+%    linkcolor=blue,
+%    urlcolor=cyan,
+%    filecolor=magenta
+%}
 \urlstyle{same}
 %----------------------------------------%
 %------------ Utils Settings ------------%
